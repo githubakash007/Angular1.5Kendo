@@ -1,0 +1,117 @@
+<div class="container chartContainer">
+    <div class="row">
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <div>
+                <label for="min">Min:</label>
+                <input type="number" id="min" ng-model="model.min" placeholder="Enter Min Value" />
+            </div>
+            <div>
+                <label for="max">Max:</label>
+                <input type="number" id="max" ng-model="model.max" placeholder="Enter Max Value" />
+            </div>
+            <button class="btn btn-primary" ng-click="model.updateMessage()">Update</button>
+            <span>{{model.message}}</span>
+        </div>
+        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+            <div class="k-content">
+                <div>
+                    <div kendo-chart k-legend="{ position: 'bottom' }"
+                     k-series-defaults="{ type: 'line' }" 
+                     k-series="[
+                                 { field: 'temperature', name: 'temperature-month' }
+                             ]"
+                    k-data-source="model.seriesData" 
+                    k-category-axis="{field:'month',label:{rotation:'225'}}"
+                    k-value-axis = {min:model.min,max:model.max}
+                    k-rebind = "model.rebindObj"
+                    k-render="model.renderEvent"></div>
+                </div>
+               
+            </div>
+
+              <div>
+                 <table class="table table-striped">
+                    <thead>
+                        <td>Temperature</td>
+                        <td>Month</td>
+                    </thead>
+                     <tr ng-repeat="d in model.seriesData track by $index">
+                         <td>{{d.temperature}}</td>
+                         <td>{{d.month}}</td>
+                         <td><button data-toggle="modal" data-target="#ModalUpdate" ng-click="model.Update(d)">Update</button></td>
+                          <td><button data-toggle="modal" data-target="#ModalAdd">Add</button></td>
+                          <td><button ng-click="model.Delete(d)">Delete</button></td>
+                     </tr>
+                     </table>
+              </div>
+
+        </div>
+
+
+       <div id="ModalAdd" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+            
+
+        <h4 class="modal-title">Add Series Data</h4>
+      </div>
+      <div class="modal-body">
+        <div>
+                <label for="temperature">Temperature:</label>
+                <input type="text" id="temperature" ng-model="model.inputData.temperature" placeholder="Enter temperature Value" />
+            </div>
+            <div>
+                <label for="month">Month:</label>
+                <input type="text" id="month" ng-model="model.inputData.month" placeholder="Enter month Value" />
+            </div>
+           
+      </div>
+      <div class="modal-footer">
+           <button class="btn btn-primary" ng-click="model.Add()">Add</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+ <div id="ModalUpdate" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+            
+
+        <h4 class="modal-title">Add Series Data</h4>
+      </div>
+      <div class="modal-body">
+        <div>
+                <label for="temperature">Temperature:</label>
+                <input type="text" id="temperature" ng-model=model.inputUpdateData.obj.temperature />
+            </div>
+            <div>
+                <label for="month">Month:</label>
+                <input type="text" id="month" ng-model=model.inputUpdateData.obj.month />
+            </div>
+           
+      </div>
+      <div class="modal-footer">
+           <button class="btn btn-primary" ng-click="model.Update()">Update</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+              
+       
+    </div>
+</div>
+
+

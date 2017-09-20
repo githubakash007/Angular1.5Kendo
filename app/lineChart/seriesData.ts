@@ -1,0 +1,49 @@
+export const SERIESDATA = [{
+    "temperature": "20",
+    "month": "January"
+},
+{
+    "temperature": "15",
+    "month": "Feburary"
+},
+{
+    "temperature": "30",
+    "month": "March"
+},
+{
+    "temperature": "38",
+    "month": "April"
+},
+// {
+//     "temperature": "40",
+//     "month": "May"
+// },
+{
+    "temperature": "40",
+    "month": "June"
+},
+{
+    "temperature": "46",
+    "month": "July"
+},
+{
+    "temperature": "60",
+    "month": "August"
+},
+{
+    "temperature": "37",
+    "month": "September"
+},
+{
+    "temperature": "55",
+    "month": "Octomber"
+},
+{
+    "temperature": "24",
+    "month": "November"
+},
+{
+    "temperature": "12",
+    "month": "December"
+}
+];
